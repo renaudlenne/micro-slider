@@ -109,36 +109,23 @@
     }
 
     setSliderWrapper() {
-      this.sliderWrapper = document.createElement('div');
-      this.sliderWrapper.classList.add(this.options.sliderWrapperClass);
+      this.sliderWrapper = this.sliderContainer.querySelector(`.${this.options.sliderWrapperClass}`);
       this.sliderWrapper.style.overflow = 'hidden';
       this.sliderWrapper.style.width = '100%';
-      this.sliderContainer.appendChild(this.sliderWrapper);
     }
 
     setSliderItems() {
-      const children = this.sliderContainer.children;
-      const dispose = [];
+      const children = this.sliderWrapper.children;
       this.items = [];
 
-      for (let i = 0, len = children.length; i < len; i++) {
-        const child = children[i];
-        const clone = child.cloneNode(true);
-
+      for (const child of children) {
         if (child.classList.contains(this.options.sliderItemClass)) {
           if (child.classList.contains(this.options.activeItemClass)) {
             this.activeItemIndex = i;
           }
 
-          dispose.push(child);
-          this.items.push(clone);
-          this.sliderWrapper.appendChild(clone);
+          this.items.push(child);
         }
-      }
-
-      for (let i = 0, len = dispose.length; i < len; i++) {
-        const d = dispose[i];
-        d.parentNode.removeChild(d);
       }
 
       this.itemCount = this.items.length;
@@ -724,6 +711,7 @@
 
     detach() {
       this.bindEvents(true);
+      this.sliderContainer.removeChild(this.indicatorContainer);
     }
   }
 

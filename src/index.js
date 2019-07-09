@@ -118,7 +118,8 @@
       const children = this.sliderWrapper.children;
       this.items = [];
 
-      for (const child of children) {
+      for (let i = 0, len = children.length; i < len; i++) {
+        const child = children[i];
         if (child.classList.contains(this.options.sliderItemClass)) {
           if (child.classList.contains(this.options.activeItemClass)) {
             this.activeItemIndex = i;

@@ -488,34 +488,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var children = this.sliderWrapper.children;
         this.items = [];
 
-        var _iteratorNormalCompletion = true;
-        var _didIteratorError = false;
-        var _iteratorError = undefined;
-
-        try {
-          for (var _iterator = children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var child = _step.value;
-
-            if (child.classList.contains(this.options.sliderItemClass)) {
-              if (child.classList.contains(this.options.activeItemClass)) {
-                this.activeItemIndex = i;
-              }
-
-              this.items.push(child);
+        for (var i = 0, len = children.length; i < len; i++) {
+          var child = children[i];
+          if (child.classList.contains(this.options.sliderItemClass)) {
+            if (child.classList.contains(this.options.activeItemClass)) {
+              this.activeItemIndex = i;
             }
-          }
-        } catch (err) {
-          _didIteratorError = true;
-          _iteratorError = err;
-        } finally {
-          try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-              _iterator.return();
-            }
-          } finally {
-            if (_didIteratorError) {
-              throw _iteratorError;
-            }
+
+            this.items.push(child);
           }
         }
 
@@ -541,8 +521,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var height = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '320px';
         var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '320px';
 
-        for (var _i = 0; _i < this.itemCount; _i++) {
-          var item = this.items[_i];
+        for (var i = 0; i < this.itemCount; i++) {
+          var item = this.items[i];
           item.style.height = height;
           item.style.width = width;
         }
@@ -571,27 +551,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.indicatorContainer.className = this.options.indicatorContainerClass;
           this.sliderContainer.appendChild(this.indicatorContainer);
 
-          var _loop = function _loop(_i2) {
+          var _loop = function _loop(i) {
             var indicator = document.createElement(_this2.options.indicatorItemTag);
             indicator.className = _this2.options.indicatorItemClass;
             indicator.innerHTML = '<a href="#">' + _this2.options.indicatorText + '</a>';
 
-            if (_i2 === 0) {
+            if (i === 0) {
               _this2.activeIndicator = indicator;
               indicator.classList.add(_this2.options.indicatorActiveClass);
             }
 
             indicator.addEventListener('click', function (e) {
               e.preventDefault();
-              _this2.set(_i2);
+              _this2.set(i);
             });
 
             _this2.indicatorContainer.appendChild(indicator);
             _this2.indicators.push(indicator);
           };
 
-          for (var _i2 = 0; _i2 < this.itemCount; _i2++) {
-            _loop(_i2);
+          for (var i = 0; i < this.itemCount; i++) {
+            _loop(i);
           }
         }
       }
@@ -704,9 +684,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'getItemIndex',
       value: function getItemIndex(el) {
-        for (var _i3 = 0; _i3 < this.itemCount; _i3++) {
-          if (this.items[_i3] === el) {
-            return _i3;
+        for (var i = 0; i < this.itemCount; i++) {
+          if (this.items[i] === el) {
+            return i;
           }
         }
 

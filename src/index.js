@@ -33,6 +33,7 @@
       arrows: false,
       arrowsClass: 'arrow',
       arrowsInnerColor: '#000000',
+      arrowsOuterColor: '#FFFFFF',
       leftArrowClass: 'left',
       rightArrowClass: 'right',
       initializedClass: 'initialized',
@@ -208,6 +209,7 @@
         this.leftArrow = document.createElement("a");
         this.leftArrow.className = `${this.options.arrowsClass} ${this.options.leftArrowClass}`;
         this.leftArrow.setAttribute("href", "#");
+        this.leftArrow.setAttribute("style", `background-color: ${this.options.arrowsOuterColor};`)
         this.leftArrow.addEventListener('click', (e) => {
           e.preventDefault();
           this.prev();
@@ -221,6 +223,7 @@
         this.rightArrow = document.createElement("a");
         this.rightArrow.className = `${this.options.arrowsClass} ${this.options.rightArrowClass}`;
         this.rightArrow.setAttribute("href", "#");
+        this.rightArrow.setAttribute("style", `background-color: ${this.options.arrowsOuterColor};`)
         this.rightArrow.addEventListener('click', (e) => {
           e.preventDefault();
           this.next();

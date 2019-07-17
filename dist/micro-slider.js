@@ -590,6 +590,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             e.preventDefault();
             _this3.prev();
           });
+          this.leftArrow.innerHTML = '\n        <svg style="height: 100%; width: 100%;" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg">\n          <path  fill="' + this.options.arrowsInnerColor + '" id="arrow-left" d="m282.48092,283.97813l-151.07667,160.07491c-7.28627,7.72028 -19.09914,7.72028 -26.38462,0l-17.62059,-18.67018c-7.27382,-7.7071 -7.28782,-20.19809 -0.03109,-27.92331l119.73088,-127.45996l-119.73088,-127.45914c-7.25673,-7.72522 -7.24273,-20.21621 0.03109,-27.92331l17.62059,-18.67018c7.28626,-7.72028 19.09913,-7.72028 26.38462,0l151.07589,160.07491c7.28626,7.71946 7.28626,20.23598 0.00078,27.95626z" transform="rotate(180 180,270) "/>\n        </svg>';
           this.sliderContainer.appendChild(this.leftArrow);
 
           this.rightArrow = document.createElement("a");
@@ -599,6 +600,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             e.preventDefault();
             _this3.next();
           });
+          this.rightArrow.innerHTML = '\n        <svg style="height: 100%; width: 100%;" viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg">\n          <path fill="' + this.options.arrowsInnerColor + '" d="m312.541195,283.978128l-151.076667,160.07491c-7.286264,7.720279 -19.099137,7.720279 -26.384623,0l-17.620584,-18.670176c-7.273826,-7.7071 -7.287818,-20.198088 -0.031095,-27.923308l119.730886,-127.459965l-119.730886,-127.459142c-7.256724,-7.725221 -7.242731,-20.216208 0.031095,-27.923308l17.620584,-18.670176c7.286264,-7.720279 19.099137,-7.720279 26.384623,0l151.07589,160.07491c7.286264,7.719455 7.286264,20.235977 0.000777,27.956255z" id="arrow-right"/>\n        </svg>';
           this.sliderContainer.appendChild(this.rightArrow);
         }
       }
@@ -767,6 +769,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     indicatorText: '&bull;',
     arrows: false,
     arrowsClass: 'arrow',
+    arrowsInnerColor: '#000000',
     leftArrowClass: 'left',
     rightArrowClass: 'right',
     initializedClass: 'initialized',

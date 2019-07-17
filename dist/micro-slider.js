@@ -447,6 +447,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.setSliderDimensions();
         this.setSliderPerspective();
         this.setIndicators();
+        this.setArrows();
         this.setXForm();
         this.bindEvents();
 
@@ -573,6 +574,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           for (var i = 0; i < this.itemCount; i++) {
             _loop(i);
           }
+        }
+      }
+    }, {
+      key: 'setArrows',
+      value: function setArrows() {
+        var _this3 = this;
+
+        if (this.options.arrows) {
+
+          this.leftArrow = document.createElement("a");
+          this.leftArrow.className = this.options.arrowsClass + ' ' + this.options.leftArrowClass;
+          this.leftArrow.setAttribute("href", "#");
+          this.leftArrow.addEventListener('click', function (e) {
+            e.preventDefault();
+            _this3.prev();
+          });
+          this.sliderContainer.appendChild(this.leftArrow);
+
+          this.rightArrow = document.createElement("a");
+          this.rightArrow.className = this.options.arrowsClass + ' ' + this.options.rightArrowClass;
+          this.rightArrow.setAttribute("href", "#");
+          this.rightArrow.addEventListener('click', function (e) {
+            e.preventDefault();
+            _this3.next();
+          });
+          this.sliderContainer.appendChild(this.rightArrow);
         }
       }
     }, {
@@ -719,6 +746,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function detach() {
         this.bindEvents(true);
         this.sliderContainer.removeChild(this.indicatorContainer);
+        this.sliderContainer.removeChild(this.leftArrow);
+        this.sliderContainer.removeChild(this.rightArrow);
       }
     }]);
 
@@ -736,6 +765,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     indicatorItemTag: 'li',
     indicatorItemClass: 'indicator',
     indicatorText: '&bull;',
+    arrows: false,
+    arrowsClass: 'arrow',
+    leftArrowClass: 'left',
+    rightArrowClass: 'right',
     initializedClass: 'initialized',
     noWrap: false,
     onCycleTo: null,

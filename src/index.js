@@ -30,6 +30,10 @@
       indicatorItemTag: 'li',
       indicatorItemClass: 'indicator',
       indicatorText: '&bull;',
+      arrows: false,
+      arrowsClass: 'arrow',
+      leftArrowClass: 'left',
+      rightArrowClass: 'right',
       initializedClass: 'initialized',
       noWrap: false,
       onCycleTo: null,
@@ -77,6 +81,7 @@
       this.setSliderDimensions();
       this.setSliderPerspective();
       this.setIndicators();
+      this.setArrows();
       this.setXForm();
       this.bindEvents();
 
@@ -196,6 +201,29 @@
       }
     }
 
+    setArrows() {
+      if (this.options.arrows) {
+
+        this.leftArrow = document.createElement("a");
+        this.leftArrow.className = `${this.options.arrowsClass} ${this.options.leftArrowClass}`;
+        this.leftArrow.setAttribute("href", "#");
+        this.leftArrow.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.prev();
+        });
+        this.sliderContainer.appendChild(this.leftArrow);
+
+        this.rightArrow = document.createElement("a");
+        this.rightArrow.className = `${this.options.arrowsClass} ${this.options.rightArrowClass}`;
+        this.rightArrow.setAttribute("href", "#");
+        this.rightArrow.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.next();
+        });
+        this.sliderContainer.appendChild(this.rightArrow);
+      }
+    }
+
     setXForm() {
       let xForm = 'transform';
 
@@ -230,6 +258,7 @@
       this.sliderContainer[fn]('mouseup', this.releaseHandler);
       this.sliderContainer[fn]('mouseleave', this.releaseHandler);
       this.sliderContainer[fn]('click', this.clickHandler);
+
 
       /**
        * Window Resize Event
@@ -713,6 +742,8 @@
     detach() {
       this.bindEvents(true);
       this.sliderContainer.removeChild(this.indicatorContainer);
+      this.sliderContainer.removeChild(this.leftArrow);
+      this.sliderContainer.removeChild(this.rightArrow);
     }
   }
 

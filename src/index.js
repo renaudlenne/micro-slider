@@ -754,8 +754,10 @@
     detach() {
       this.bindEvents(true);
       this.sliderContainer.removeChild(this.indicatorContainer);
-      this.sliderContainer.removeChild(this.leftArrow);
-      this.sliderContainer.removeChild(this.rightArrow);
+      if (this.options.arrows) {
+        this.sliderContainer.removeChild(this.leftArrow);
+        this.sliderContainer.removeChild(this.rightArrow);
+      }
     }
   }
 
